@@ -155,3 +155,9 @@ static int lept_parse_string(lept_context* c, lept_value* v) {
 3. 加入对代理对的处理，不正确的代理对范围要返回 `LEPT_PARSE_INVALID_UNICODE_SURROGATE` 错误。
 
 如果你遇到问题，有不理解的地方，或是有建议，都欢迎在评论或 [issue](https://github.com/miloyip/json-tutorial/issues) 中提出，让所有人一起讨论。
+
+## 6.pyz个人笔记
+
+在编码工作中，实际建立起来“真实字符”与“编码数字”（即码点）之间映射的是unicode,收录于ucs中，而utf-8并没有改变这种映射关系，只是改造了这些码点的存储方式，utf-8属于UTF的一种，只是因为它部分兼容了ascii编码，同时是变长编码方式，大多数情况下节省存储空间，故我们在使用unicode时候通常对应使用utf-8格式。
+
+我们的JSON中"\uXXXX",XXXX并不是码点，而是需要对这个4位16进制进行解析，才能算出对应码点。
